@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireReportsToWhenMinor</fullName>
+    <active>true</active>
+    <description>Require ReportsTo when the contact is a minor.</description>
+    <errorConditionFormula>AND(
+    Age__c &lt; 18,
+				ISBLANK(ReportsToId)
+)</errorConditionFormula>
+    <errorMessage>The ReportsTo field is required.</errorMessage>
+</ValidationRule>

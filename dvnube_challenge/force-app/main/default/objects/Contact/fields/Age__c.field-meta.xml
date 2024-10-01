@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age__c</fullName>
+    <description>Age of the contact.</description>
+    <externalId>false</externalId>
+    <formula>YEAR(TODAY()) - YEAR(Birthdate) -
+IF(
+    AND(
+        MONTH(Birthdate) = 02,
+        DAY(Birthdate) = 29,
+        TODAY() &gt; DATE(YEAR(TODAY()), 02, 28)
+    ),
+    0,    
+    IF(
+        TODAY() &gt;= DATE(YEAR(TODAY()), MONTH(Birthdate), DAY(Birthdate)),
+        0,
+        1
+    )
+)</formula>
+    <label>Age</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
